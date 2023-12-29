@@ -1,0 +1,20 @@
+on:
+  workflow_dispatch:
+
+jobs:
+  test-action:
+    name: "Test Cache Action"
+    runs-on: "ubuntu-latest"
+
+    permissions:
+      checks: "write"
+      pull-requests: "write"
+    
+    steps:
+      - uses: actions/checkout@v3
+      - uses: buildless/cache@429250b95f2f46ab27e37105316ecfad4937bb73
+        with:
+          path: ".editorconfig"
+          key: "test"
+          token: ${{ secrets.BUILDLESS_APIKEY }}
+          endpoint: ${{ vars.CACHE_ENDPOINT }}
