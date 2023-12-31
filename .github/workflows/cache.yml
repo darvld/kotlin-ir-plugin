@@ -15,12 +15,6 @@ jobs:
       - uses: buildless/cache@429250b95f2f46ab27e37105316ecfad4937bb73
         with:
           path: ".editorconfig"
-          key: "test"
+          key: ${{ vars.CACHE_KEY }}
           token: ${{ secrets.BUILDLESS_APIKEY }}
           endpoint: ${{ vars.CACHE_ENDPOINT }}
-      - uses: buildless/cache/save@429250b95f2f46ab27e37105316ecfad4937bb73
-        with:
-          path: ".editorconfig"
-          token: ${{ secrets.BUILDLESS_APIKEY }}
-          endpoint: ${{ vars.CACHE_ENDPOINT }}
-          key: "test"
